@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        resultTextView = findViewById(R.id.resultTextView);
-        holeButton1 = findViewById(R.id.holeButton1);
-        holeButton2 = findViewById(R.id.holeButton2);
-        holeButton3 = findViewById(R.id.holeButton3);
+        resultTextView = (TextView)findViewById(R.id.resultTextView);
+        holeButton1 = (Button)findViewById(R.id.holeButton1);
+        holeButton2 = (Button)findViewById(R.id.holeButton2);
+        holeButton3 = (Button)findViewById(R.id.holeButton3);
         Log.v(TAG, "Finished Pre-initialisation!\n");
     }
 
