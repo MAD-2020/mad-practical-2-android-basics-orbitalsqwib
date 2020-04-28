@@ -3,7 +3,7 @@ package sg.edu.np.WhackAMole;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.MotionEvent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,10 +13,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView resultTextView;
-    Button holeButton1;
-    Button holeButton2;
-    Button holeButton3;
+    private static final String TAG = "Whack-A-Mole";
+
+    private TextView resultTextView;
+    private Button holeButton1;
+    private Button holeButton2;
+    private Button holeButton3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
         holeButton1 = findViewById(R.id.holeButton1);
         holeButton2 = findViewById(R.id.holeButton2);
         holeButton3 = findViewById(R.id.holeButton3);
+        Log.v(TAG, "Finished Pre-initialisation!\n");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         final List<Button> holeButtons = new ArrayList<>();
         holeButtons.add(holeButton1);
@@ -52,11 +60,14 @@ public class MainActivity extends AppCompatActivity {
         holeButton1.setOnClickListener(listener);
         holeButton2.setOnClickListener(listener);
         holeButton3.setOnClickListener(listener);
-    }
 
+        Log.v(TAG, "Starting GUI!");
+    }
 }
 
 class Model {
+
+    private static final String TAG = "Whack-A-Mole";
 
     public static class Game {
 
@@ -124,23 +135,23 @@ class Model {
             System.out.print("Whack-A-Mole: ");
             switch (holeIndex) {
                 case 0:
-                    System.out.println("Button Left Clicked!");
+                    Log.v(TAG, "Button Left Clicked!");
                     break;
                 case 1:
-                    System.out.println("Button Middle Clicked!");
+                    Log.v(TAG, "Button Middle Clicked!");
                     break;
                 case 2:
-                    System.out.println("Button Right Clicked!");
+                    Log.v(TAG, "Button Right Clicked!");
                     break;
                 default:
-                    System.out.println("Unknown Button Clicked! Did you forget to add cases for new buttons?");
+                    Log.v(TAG, "Unknown Button Clicked! Did you forget to add cases for new buttons?");
             }
             if (hitMole) {
                 setScore(score+1);
-                System.out.println("Hit, score added!\n");
+                Log.v(TAG, "Hit, score added!\n");
             } else {
                 setScore(score-1);
-                System.out.println("Missed, score deducted!\n");
+                Log.v(TAG, "Missed, score deducted!\n");
             }
         }
 
